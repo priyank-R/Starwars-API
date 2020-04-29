@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Search The Characters</title>
+    <!--Css for Table-->
+    <link rel="stylesheet" href="css/table-style.css">
+    <!--JS for Search Bar-->
+    <script src="js/get_input.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- Search bar Begins-->
+    <h2>My Customers</h2>
+
+    <input type="text" id="search_box" onkeyup="" placeholder="Search for names.." title="Type in a name"><input type="button" value="Search" onclick="on_search('default')"> </input>
+
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:33%;">Sr No</th>
+            <th style="width:33%;">Name</th>
+            <th style="width:33%;">Homeworld</th>
+        </tr>
+
+    </table>
+
+    <input type="button" id="next_btn" value="next" style="display: none;">
+
+    <!--Search Bar Ends-->
+
+</body>
+
+</html>
