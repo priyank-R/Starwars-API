@@ -2,6 +2,7 @@
 
 
 $(document).ready(function() {
+    on_search('https://swapi.dev/api/people/');
     var timeout = null;
     $('#search-bar').keyup(
         function() {
