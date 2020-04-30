@@ -5,23 +5,34 @@
     <!--Css for Table-->
     <link rel="stylesheet" href="css/table-style.css">
     <!--JS for Search Bar-->
-    <script src="js/get_input.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="js/async_get_input.js"></script>
+    <script src="js/temp.js"></script>
+
+
 </head>
 
 <body>
 
     <!-- Search bar Begins-->
     <h2>My Customers</h2>
+    <input type="button" onclick="fetch_values_temp()" value="temp">
 
-    <input type="text" id="search_box" onkeyup="" placeholder="Search for names.." title="Type in a name"><input type="button" value="Search" onclick="on_search('default')"> </input>
+    <input type="text" id="search_box" placeholder="Search for names.." title="Type in a name">
+    <input type="button" id="search-btn" value="Search" onclick="on_search('default')"> </input>
 
     <table id="myTable">
-        <tr class="header">
-            <th style="width:33%;">Sr No</th>
-            <th style="width:33%;">Name</th>
-            <th style="width:33%;">Homeworld</th>
-        </tr>
+        <thead>
+            <tr class="header">
+                <th style="width:33%;">Sr No</th>
+                <th style="width:33%;">Name</th>
+                <th style="width:33%;">Homeworld</th>
+            </tr>
+        </thead>
+
+        <tbody id="tableBody">
+
+        </tbody>
 
     </table>
 
