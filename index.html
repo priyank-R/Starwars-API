@@ -4,6 +4,7 @@
     <title>Search The Characters</title>
     <!--Css for Table-->
     <link rel="stylesheet" href="css/table-style.css">
+
     <!--JS for Search Bar-->
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script src="js/async_get_input.js"></script>
@@ -15,11 +16,11 @@
 <body>
 
     <!-- Search bar Begins-->
-    <h2>My Customers</h2>
-    <input type="button" onclick="fetch_values_temp()" value="temp">
+    <h2>Star Wars Character Search</h2>
 
-    <input type="text" id="search_box" placeholder="Search for names.." title="Type in a name">
-    <input type="button" id="search-btn" value="Search" onclick="on_search('default')"> </input>
+
+    <input type="text" id="search-bar" placeholder="Search for names.." title="Type in a name">
+
 
     <table id="myTable">
         <thead>
@@ -36,7 +37,9 @@
 
     </table>
 
-    <input type="button" id="next_btn" value="next" style="display: none;">
+    <div class="next_btn">
+        <input type="button" id="next_btn" class="btn" value="next" style="display: none;">
+    </div>
 
     <!--Search Bar Ends-->
 

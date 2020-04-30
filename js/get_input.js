@@ -1,7 +1,7 @@
  function on_search(url) {
      if (url == "default") {
          document.getElementById("next_btn").style.display = "none";
-         var input_string = document.getElementById("search_box").value;
+         var input_string = document.getElementById("search-bar").value;
          var rootURL = 'https://swapi.dev/api/people/?search=';
          var customURL = rootURL + input_string;
          start_val = 0;
