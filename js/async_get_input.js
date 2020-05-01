@@ -162,7 +162,17 @@ async function more_records(next_url) {
 //#6. To store the URL of the character in the Session and using it in the next page 
 
 
-function more_details(url) {
-    sessionStorage.setItem("ClickURL", url);
-    window.location.assign('../more-details.html');
+async function more_details(url) {
+    // sessionStorage.setItem("ClickURL", url);
+    // window.location.assign('../more-details.html');
+    //   console.log("clickedURL" + url);
+
+    var individuals = await fetch_values(url);
+    document.getElementById('char_name').innerHTML = "Name: " + individuals.name;
+    document.getElementById('birth_year').innerHTML = "Birth Year: " + individuals.birth_year;
+    document.getElementById('mass').innerHTML = "Mass: " + individuals.mass;
+    document.getElementById('skin_color').innerHTML = "Skin Color: " + individuals.skin_color;
+
+    var homeworld = await fetch_values(individuals.homeworld);
+    document.getElementById('homeworld').innerHTML = "Home World:" + homeworld.name;
 }

@@ -23,26 +23,37 @@
 
 
 
-    <input type="text" id="search-bar" placeholder="Search for names.." title="Type in a name">
 
 
-    <table id="myTable">
-        <thead>
-            <tr class="header">
-                <th style="width:33%;">Sr No</th>
-                <th style="width:33%;">Name</th>
-                <th style="width:33%;">Homeworld</th>
-            </tr>
-        </thead>
+    <div class="sidenav">
+        <h2 style="color:white ; margin-left:30px"><u>More Details</u></h2>
+        <a id="char_name">Name: </a>
+        <a id="birth_year">Birth Year:</a>
+        <a id="mass">Mass:</a>
+        <a id="skin_color">Skin Color:</a>
+        <a id="homeworld">Home World:</a>
+    </div>
+    <div class="main">
+        <input type="text" id="search-bar" placeholder="Search for names.." title="Type in a name">
+        <table id="myTable">
+            <thead>
+                <tr class="header">
+                    <th style="width:33%;">Sr No</th>
+                    <th style="width:33%;">Name</th>
+                    <th style="width:33%;">Homeworld</th>
+                </tr>
+            </thead>
 
-        <tbody id="tableBody">
+            <tbody id="tableBody">
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
 
-    <div class="next_btn">
-        <input type="button" id="next_btn" class="btn" value="next" style="display: none;">
+        <div class="next_btn">
+            <input type="button" id="next_btn" class="btn" value="next" style="display: none;">
+        </div>
+
     </div>
 
     <!--Search Bar Ends-->
