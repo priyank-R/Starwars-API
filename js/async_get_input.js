@@ -1,9 +1,15 @@
-//Triggering the on_search function when the user starts typing 
+//Declaring 2 Global Variables data_next & data_prev
+var data_next, data_prev, Start_val;
+
+
+
 
 
 $(document).ready(function() {
     on_search('https://swapi.dev/api/people/');
     var timeout = null;
+
+    //Triggering the on_search function when the user starts typing 
     $('#search-bar').keyup(
         function() {
             clearTimeout(timeout);
@@ -11,13 +17,32 @@ $(document).ready(function() {
                 on_search('default');
             }, 10);
         });
+
+    //Binding onclick event with next button
+    $('#next_btn').click(
+        function() {
+            console.log(Start_val);
+            Start_val += 10;
+            on_search(data_next, Start_val);
+        });
+
+    //Binding onclick event with the previous button
+    $('#prev_btn').click(
+        function() {
+            Start_val -= 10;
+            on_search(data_prev, Start_val);
+        });
+
+
 });
 
 
 async function on_search(url, start_val = 0) {
     //Identifies the URL and creates a specific search-url 
+    //  console.log('start_val' + this.start_val);
     if (url == "default") {
         document.getElementById("next_btn").style.display = "none";
+        document.getElementById("prev_btn").style.display = "none";
         var input_string = document.getElementById("search-bar").value;
         var rootURL = 'https://swapi.dev/api/people/?search=';
         var customURL = rootURL + input_string;
@@ -34,6 +59,7 @@ async function on_search(url, start_val = 0) {
 
     //Using the synchronus ajax method to fetch the records and store it in the data variable 
     var data = await fetch_values(customURL);
+    //  console.log(data);
 
 
 
@@ -44,14 +70,33 @@ async function on_search(url, start_val = 0) {
         return console.log("returned");
     }
     if (status == "More records") {
+
+        //passing the url of next and previous records to the 2 global variables 
+        data_next = data.next;
+        data_prev = data.previous;
+        Start_val = start_val;
+        //   console.log(data_prev);
+
+
+
         var btn = document.getElementById("next_btn");
         btn.style.display = "block";
-        btn.addEventListener("click", function() {
-            start_val += 10;
-            return on_search(data.next, start_val); //Not sure if the exisiting 'on_search()' function is terminated
-            // when the new one begins
-        });
+        if (data_prev != null) {
+            var btn1 = document.getElementById("prev_btn");
+            btn1.style.display = "block";
+        }
+
+
+
+        /*     btn.addEventListener("click", function() {
+                 start_val += 10;
+                 // return on_search(data.next, start_val); //Not sure if the exisiting 'on_search()' function is terminated
+                 return on_next(data.next, start_val);
+
+                 // when the new one begins
+             });*/
     }
+    return "null";
 
 }
 
@@ -68,6 +113,7 @@ async function clear_table() {
     while (document.getElementById('myTable').hasChildNodes()) {
         Parent.removeChild(Parent.firstChild);
     }
+
 }
 
 
@@ -76,6 +122,7 @@ async function clear_table() {
 
 async function fetch_values(customURL) {
     var result = null;
+
     $.ajax({
         url: customURL,
         type: 'get',
@@ -83,6 +130,7 @@ async function fetch_values(customURL) {
         async: false,
         success: function(data) {
             result = data;
+            document.getElementById('loader').innerHTML = "";
         }
     });
 
@@ -154,7 +202,7 @@ async function more_records(next_url) {
     btn.addEventListener("click", function() {
         on_search(next_url);
         start_val = start_val + 10;
-        console.log("start_val: " + start_val);
+        //  console.log("start_val: " + start_val);
     });
 }
 
